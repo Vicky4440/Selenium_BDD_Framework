@@ -116,17 +116,48 @@
 			<artifactId>poi-ooxml</artifactId>
 			<version>5.2.2</version>
 		</dependency>
+
+						<!-- ExtentReports for HTML reporting -->
+						<dependency>
+							<groupId>com.aventstack</groupId>
+							<artifactId>extentreports</artifactId>
+							<version>4.1.7</version>
+						</dependency>
+
+						<!-- OpenHTMLToPDF for converting HTML report to PDF -->
+						<dependency>
+							<groupId>com.openhtmltopdf</groupId>
+							<artifactId>openhtmltopdf-pdfbox</artifactId>
+							<version>1.0.10</version>
+						</dependency>
+						<dependency>
+							<groupId>com.openhtmltopdf</groupId>
+							<artifactId>openhtmltopdf-core</artifactId>
+							<version>1.0.10</version>
+						</dependency>
 		
-		<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jar-plugin 
 <dependency>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-jar-plugin</artifactId>
-    <version>3.4.2</version>
-</dependency> -->
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-text</artifactId>
+    <version>1.13.0</version>
+</dependency>
 
 
 
 		
+		
+		<!-- JavaMail (stable implementation available on Maven Central) -->
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+		<!-- Activation (for attachments) -->
+		<dependency>
+			<groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.1.1</version>
+		</dependency>
 	</dependencies>
 	
 	<build> 

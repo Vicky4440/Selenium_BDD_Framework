@@ -14,17 +14,15 @@ public class Data_Store {
 
 		String result = null;
 		if(fieldName.equals("First Name")) {
-			result= "Gayathri";
+			result= "Vikram";
 		}else if(fieldName.equals("Last Name")) {
-			result= "maddi";
+			result= "Nalawade";
 		}else if(fieldName.equals("Zip/Postal Code")){
 			result= "522509";
 		}
 		return result;
 	}
-//	public static final String firstName="gayathri";
-//	public static final String lastName="maddi";
-//	public static final int zip=522509;
+
 	
 	public static ArrayList<String> Items = new ArrayList<String>();
 	static {
