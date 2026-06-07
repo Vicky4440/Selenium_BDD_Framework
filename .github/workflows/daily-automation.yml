@@ -1,1 +1,69 @@
 
+name: Daily Automation Report
+
+on:
+  schedule:
+    # Runs every day at 9:00 AM IST (03:30 UTC)
+    - cron: '30 3 * * *'
+
+  workflow_dispatch:
+
+jobs:
+  automation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Cache Maven Dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2
+          key: maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            maven-
+
+      - name: Run Automation Suite
+        run: mvn clean test
+
+      - name: Upload Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: extent-report
+          path: Reports/
+
+      - name: Send Email
+        if: always()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          secure: false
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+
+          subject: Daily Automation Execution Report
+
+          to: komalaade479@gmail.com,vikramnalawade7777@gmail.com
+
+          from: GitHub Automation
+
+          body: |
+            Hello Team,
+
+            Daily automation execution has completed.
+
+            Please find the attached Extent Report.
+
+            Regards,
+            GitHub Actions
+
+          attachments: Reports/ExtentReport.html
